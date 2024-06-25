@@ -1,0 +1,13 @@
+## Interface: 100207
+## Title: Libs - Farm Assistant
+## Notes: Loot tracking for farming and gathering.
+## IconTexture: Interface/Addons/Libs-FarmAssistant/Logo-Icon
+## Version: @project-version@
+## Author: wutname1
+## X-Curse-Project-ID: xxxxxxxx
+## X-Wago-ID: xxxxxxxxx
+## X-Github: https://github.com/Wutname1/Libs-FarmAssistant
+
+Libs/Ace3/Ace3.xml
+
+main.lua
