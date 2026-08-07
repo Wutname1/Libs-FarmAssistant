@@ -10,7 +10,7 @@ This file provides guidance to Claude Code when working with the Libs-FarmAssist
 
 ```
 Libs-FarmAssistant/
-├── Libs-FarmAssistant.toc       # Interface 120000, SavedVariables: LibsFarmAssistantDB
+├── Libs-FarmAssistant.toc       # Interface 120005, SavedVariables: LibsFarmAssistantDB
 ├── Libs-FarmAssistant.lua       # AceAddon main + LibAT Logger
 ├── Core/
 │   ├── Database.lua             # AceDB with char (session+history) + profile (settings+goals+autoLoot)

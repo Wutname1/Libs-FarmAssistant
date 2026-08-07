@@ -140,7 +140,15 @@ function LootingCore:ProcessSlot(slotData, modules)
 
 				if slotData.slotType == Enum.LootSlotType.Item and slotData.itemID then
 					recentlyAutoLooted[slotData.itemID] = GetTime()
-					LibsFarmAssistant:RecordItem(slotData.itemID, slotData.itemName, slotData.itemLink or slotData.itemName, slotData.icon, slotData.quality, slotData.quantity, slotData.sellPrice or 0)
+					LibsFarmAssistant:RecordItem(
+						slotData.itemID,
+						slotData.itemName,
+						slotData.itemLink or slotData.itemName,
+						slotData.icon,
+						slotData.quality,
+						slotData.quantity,
+						slotData.sellPrice or 0
+					)
 				end
 
 				self:PrintLooted(slotData, result.reason or module.name)

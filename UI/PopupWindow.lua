@@ -90,8 +90,11 @@ function PopupWindow:CreatePopup()
 		LibsFarmAssistant.db.popup.point = point or 'CENTER'
 		LibsFarmAssistant.db.popup.x = x or 0
 		LibsFarmAssistant.db.popup.y = y or 0
-		LibsFarmAssistant.db.popup.width = window:GetWidth()
-		LibsFarmAssistant.db.popup.height = window:GetHeight()
+		local w, h = window:GetWidth(), window:GetHeight()
+		if w > 0 and h > 0 then
+			LibsFarmAssistant.db.popup.width = w
+			LibsFarmAssistant.db.popup.height = h
+		end
 		if updateTimer then
 			PopupWindow:CancelTimer(updateTimer)
 			updateTimer = nil
@@ -265,7 +268,7 @@ end
 function PopupWindow:TogglePopup()
 	local frame = self:CreatePopup()
 	if not frame then
-		LibsFarmAssistant:Print("Dashboard requires Libs-AddonTools. Install it from CurseForge.")
+		LibsFarmAssistant:Print('Dashboard requires Libs-AddonTools. Install it from CurseForge.')
 		return
 	end
 
@@ -273,9 +276,11 @@ function PopupWindow:TogglePopup()
 		frame:Hide()
 	else
 		local db = LibsFarmAssistant.db.popup
+		local w = (db.width and db.width > 0) and db.width or 420
+		local h = (db.height and db.height > 0) and db.height or 350
 		frame:ClearAllPoints()
 		frame:SetPoint(db.point or 'CENTER', UIParent, db.point or 'CENTER', db.x or 0, db.y or 0)
-		frame:SetSize(db.width or 500, db.height or 400)
+		frame:SetSize(w, h)
 
 		self:UpdatePopupContent()
 		frame:Show()

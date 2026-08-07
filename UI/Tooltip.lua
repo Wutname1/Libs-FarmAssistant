@@ -81,7 +81,13 @@ function LibsFarmAssistant:BuildTooltip(tooltip)
 			return a.count > b.count
 		end)
 
-		for _, item in ipairs(sorted) do
+		local maxItems = 10
+		for i, item in ipairs(sorted) do
+			if i > maxItems then
+				local remaining = #sorted - maxItems
+				tooltip:AddLine(string.format('  ...and %d more items', remaining), 0.5, 0.5, 0.5)
+				break
+			end
 			local rate = hours > 0 and string.format(' (%.1f/hr)', item.count / hours) or ''
 			local color = QUALITY_COLORS[item.quality] or QUALITY_COLORS[1]
 			tooltip:AddDoubleLine(string.format('  %s x%s', item.link or item.name, self:FormatNumber(item.count)), rate, color.r, color.g, color.b, 0.6, 0.6, 0.6)

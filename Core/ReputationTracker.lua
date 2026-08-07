@@ -23,6 +23,10 @@ function ReputationTracker:OnReputationGained(event, text)
 		return
 	end
 
+	if not text or not canaccessvalue(text) then
+		return
+	end
+
 	local faction, amount = text:match('Reputation with (.+) increased by (%d+)')
 	if not faction or not amount then
 		return
